@@ -7,36 +7,133 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
-      theme: ThemeData(
-        // useMaterial3: false,
-        primarySwatch: Colors.blue,
-      ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    return const MaterialApp(
+      title: 'Radio Button',
+      home: MyHomePage(title: 'Radio Button'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
-  const MyHomePage({super.key, required this.title});  
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
 
+class _MyHomePageState extends State<MyHomePage> {
+  String selectedboleto = 'Ninguno';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
-        ),
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 30,
+          ),
+          Text(' Boleto seleccionado: $selectedboleto',
+              style: const TextStyle(fontSize: 25)),
+          const SizedBox(height: 45),
+          SizedBox(
+            width: 300,
+            child: RadioMenuButton(
+              value: 'MonLaferte',
+              groupValue: selectedboleto,
+              onChanged: (selectedvalor) {
+                setState(() => selectedboleto = selectedvalor!);
+              },
+              style: ButtonStyle(
+                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10))),
+                elevation: const MaterialStatePropertyAll(2),
+                backgroundColor: const MaterialStatePropertyAll(Colors.white),
+              ),
+              child: Row(
+                children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  SizedBox(
+                    height: 80,
+                    child: Image.network(
+                        'https://raw.githubusercontent.com/nkmserrano/practica1_6J_IOS/main/monlaferte.jpg'),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const Text('Mon Laferte', style: TextStyle(fontSize: 25)),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 45),
+          SizedBox(
+            width: 300,
+            child: RadioMenuButton(
+              value: 'Belanova',
+              groupValue: selectedboleto,
+              onChanged: (selectedvalor) {
+                setState(() => selectedboleto = selectedvalor!);
+              },
+              style: ButtonStyle(
+                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10))),
+                elevation: const MaterialStatePropertyAll(2),
+                backgroundColor: const MaterialStatePropertyAll(Colors.white),
+              ),
+              child: Row(
+                children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  SizedBox(
+                    height: 80,
+                    child: Image.network(
+                        'https://raw.githubusercontent.com/nkmserrano/practica1_6J_IOS/main/mygbelanova.jpg'),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const Text('Belanova', style: TextStyle(fontSize: 25)),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 45),
+          SizedBox(
+            width: 300,
+            child: RadioMenuButton(
+              value: 'Luis Miguel',
+              groupValue: selectedboleto,
+              onChanged: (selectedvalor) {
+                setState(() => selectedboleto = selectedvalor!);
+              },
+              style: ButtonStyle(
+                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10))),
+                elevation: const MaterialStatePropertyAll(2),
+                backgroundColor: const MaterialStatePropertyAll(Colors.white),
+              ),
+              child: Row(
+                children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  SizedBox(
+                    height: 80,
+                    child: Image.network(
+                        'https://raw.githubusercontent.com/nkmserrano/img_FlutterFlow_IOS_6J/main/Act12_NavBar_FlutterFlow/luismi.jpg'),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const Text('Luis Miguel', style: TextStyle(fontSize: 25)),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
